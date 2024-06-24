@@ -30,7 +30,7 @@ namespace CurrencyConverterApi.Services
                 var exchangeRateAsync = await _currencyExchangeApiService.GetExchangeRate(baseCurrency, targetCurrency);
                 exchangeRate = exchangeRateAsync.ToString();
                 //Save exchange rate in the cache for the next 15 minutes
-                await _cache.SetCacheValue(keyName, exchangeRate, TimeSpan.FromMinutes(1));
+                await _cache.SetCacheValue(keyName, exchangeRate, TimeSpan.FromMinutes(15));
             }
 
             //Calculate amount to be returned in the target currency
